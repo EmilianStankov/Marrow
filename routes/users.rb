@@ -1,29 +1,36 @@
+get '/' do
+  erb :'users/login'
+end
+
 get '/users/register' do
-  erb :register
+  erb :'users/register'
 end
 
 post '/users/register' do
-  salt = SecureRandom.hex(8)
-  u = User.new
-  u.name = params[:username]
-  u.email = params[:email]
-  u.salt = salt
-  u.password = salt + params[:password]
-  puts salt + params[:password]
-  puts u.password
-  u.save
+  if params[:username].length < 4
+    erb :'users/registration_fail'
+  elsif params[:password].length < 8
+    erb :'users/registration_fail'
+  else
+    Users.register(params[:username], params[:email], params[:password])
+    erb :'users/registration_successful'
+  end
 end
 
 get '/users/login' do
-  erb :login
+  erb :'users/login'
 end
 
 post '/users/login' do
-  u = User.find_by(name: params[:username])
-  salt = u.salt
-  if u.password_hash == Digest::SHA1.hexdigest(salt + params[:password])
-    erb :login_successful
+  u = Users.find_by(name: params[:username])
+  if u != nil
+    salt = u.salt
+    if u.password_hash == Digest::SHA1.hexdigest(salt + params[:password])
+      erb :'users/login_successful'
+    else
+      erb :'users/login_fail'
+    end
   else
-    erb :login
+    erb :'users/login_fail'
   end
 end
