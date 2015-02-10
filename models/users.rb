@@ -13,7 +13,7 @@ class Users < ActiveRecord::Base
 
   def self.register(name, email, password)
     salt = SecureRandom.hex(8)
-    u = User.new
+    u = Users.new
     u.name = name
     u.email = email
     u.salt = salt

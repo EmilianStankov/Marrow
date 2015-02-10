@@ -1,0 +1,13 @@
+<p>Logged in as <%= @@user %></p>
+<% if @marrows.any? %>
+  <ul>
+    <% @marrows.each do |marrow| %>
+      <% if marrow.creator == @@user %>
+        <li><%= marrow.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No marrows available.</p>
+<% end %>
+<a href ="/marrows/create_marrow">Create a new Marrow.</a>

@@ -1,0 +1,14 @@
+<form action="/marrows/create_marrow" method="post">
+  Marrow name:<br>
+  <input type="text" name="name"><br>
+  Marrow creator: <%= @@user %><br>
+  <input type="hidden" name="creator" value=<%= @@user %> />
+  Content:<br>
+  <input type="text" name="content"><br>
+  Access level:<br>
+  <input type="radio" name="access_level" value="private" checked>Private<br>
+  <input type="radio" name="access_level" value="public">Public<br>
+  <input type="submit" value="Save"><br>
+  <a href="/marrows/list_marrows">See all marrows by <%= @@user %></a><br>
+  <a href="/users/register">Don't have an account? Register here!</a>
+</form>

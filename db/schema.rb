@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208195332) do
+ActiveRecord::Schema.define(version: 20150209171108) do
+
+  create_table "marrows", force: :cascade do |t|
+    t.string "name"
+    t.string "creator"
+    t.string "content"
+    t.string "access_level"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

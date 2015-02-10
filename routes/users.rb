@@ -1,3 +1,7 @@
+before do
+  @@user ||= nil
+end
+
 get '/' do
   erb :'users/login'
 end
@@ -23,14 +27,24 @@ end
 
 post '/users/login' do
   u = Users.find_by(name: params[:username])
-  if u != nil
+  unless u == nil
     salt = u.salt
     if u.password_hash == Digest::SHA1.hexdigest(salt + params[:password])
-      erb :'users/login_successful'
+      @@user = params[:username]
+      if Marrows.exists?(creator: @@user)
+        @marrows = Marrows.where(creator: @@user)
+        erb :'marrows/list_marrows'
+      else
+        erb :'marrows/create_marrow'
+      end
     else
       erb :'users/login_fail'
     end
   else
     erb :'users/login_fail'
   end
+end
+
+def authenticate
+  redirect "/users/login" if @@user == nil
 end
