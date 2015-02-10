@@ -3,6 +3,7 @@ class CreateMarrows < ActiveRecord::Migration
     create_table :marrows do |t|
       t.string :name
       t.string :creator
+      t.string :language
       t.string :content
       t.string :access_level
     end

@@ -1,10 +1,19 @@
-<form action="/marrows/create_marrow" method="post">
+<form action="/marrows/create_marrow" method="post" id="marrow_form">
   Marrow name:<br>
   <input type="text" name="name"><br>
+  <select name="language" form="marrow_form">
+    <% Pygments.lexers.sort.each do |lexer| %>
+      <% l = lexer[1][:aliases][0] %>
+      <option value=<%= l %>><%= lexer[0] %></option>
+    <% end %>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
   Marrow creator: <%= @@user %><br>
   <input type="hidden" name="creator" value=<%= @@user %> />
   Content:<br>
-  <input type="text" name="content"><br>
+  <textarea cols="120" rows="40" name="content"></textarea><br>
   Access level:<br>
   <input type="radio" name="access_level" value="private" checked>Private<br>
   <input type="radio" name="access_level" value="public">Public<br>

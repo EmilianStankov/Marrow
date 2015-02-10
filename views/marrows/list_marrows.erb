@@ -3,7 +3,7 @@
   <ul>
     <% @marrows.each do |marrow| %>
       <% if marrow.creator == @@user %>
-        <li><%= marrow.name %></li>
+        <li><%= Pygments.highlight(marrow.content, lexer: marrow.language, options: {linenos: 'table'}) %></li>
       <% end %>
     <% end %>
   </ul>
