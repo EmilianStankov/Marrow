@@ -10,8 +10,11 @@
     <h1>MARROW</h1>
     <div id="menu">
       <ul id="menu">
-        <li><a href="/marrows/list_marrows">Your marrows</a></li>
-        <li><a href="/marrows/popular_marrows">Popular</a></li>
+        <% if @@user != nil %>
+          <li><a href="/marrows/list_marrows">Your marrows</a></li>
+        <% end %>
+        <li><a href="/marrows/browse/all_marrows">Browse</a>
+        <li><a href="/marrows/browse/popular_marrows">Popular</a></li>
         <% if @@user == nil %>
           <li><a href="/users/login">Login</a></li>
         <% else %>

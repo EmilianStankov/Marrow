@@ -1,8 +1,3 @@
-get '/marrows/popular_marrows' do
-  @marrows = Marrows.where(access_level: 'public').sort[0..50]
-  erb :'marrows/popular_marrows'
-end
-
 get '/marrows/create_marrow' do
   authenticate
   erb :'marrows/create_marrow'
@@ -63,4 +58,14 @@ get '/marrows/dislike/:marrow' do
   @marrow.update(rating: @marrow.rating - 1)
   u.update(likes: u.likes - [@marrow])
   erb :'marrows/view_marrow'
+end
+
+get '/marrows/browse/all_marrows' do
+  @marrows = Marrows.where(access_level: 'public')
+  erb :'marrows/all_marrows'
+end
+
+get '/marrows/browse/popular_marrows' do
+  @marrows = Marrows.where(access_level: 'public').sort[0..50]
+  erb :'marrows/popular_marrows'
 end
