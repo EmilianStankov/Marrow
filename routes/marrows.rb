@@ -1,10 +1,18 @@
+get '/marrows/popular_marrows' do
+  @marrows = Marrows.where(access_level: 'public').sort[0..50]
+  erb :'marrows/popular_marrows'
+end
+
 get '/marrows/create_marrow' do
   authenticate
   erb :'marrows/create_marrow'
 end
 
 post '/marrows/create_marrow' do
-  Marrows.create(params[:name], params[:language], @@user, params[:content], params[:access_level])
+  Marrows.create(
+    params[:name], params[:language], @@user,
+    params[:content], 0, params[:access_level]
+  )
   @marrows = Marrows.where(creator: @@user)
   erb :'marrows/list_marrows'
 end
@@ -16,8 +24,9 @@ get '/marrows/list_marrows' do
 end
 
 get '/marrows/:marrow' do
-  authenticate
   @marrow = Marrows.find_by(name: params[:marrow])
+  erb :'marrows/missing' if @marrow == nil
+  authenticate if @marrow.access_level == 'private'
   erb :'marrows/view_marrow'
 end
 

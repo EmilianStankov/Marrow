@@ -1,7 +1,7 @@
 <html>
   <style>
-  /*monokai*/
     <%= Pygments.css('.highlight', style: 'monokai') %>
+    div.marrow_container { width: 800px; height: 500px; overflow: auto;}
   </style>
   <head>
     <title>Marrow</title>
@@ -12,6 +12,11 @@
       <ul id="menu">
         <li><a href="/marrows/list_marrows">Your marrows</a></li>
         <li><a href="/marrows/popular_marrows">Popular</a></li>
+        <% if @@user == nil %>
+          <li><a href="/users/login">Login</a></li>
+        <% else %>
+          <li><a href="/users/logout">Logout</a></li>
+        <% end %>
       </ul>
     </div>
     <%= yield %>
