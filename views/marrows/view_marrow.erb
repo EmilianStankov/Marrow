@@ -1,0 +1,6 @@
+<p>Logged in as <%= @@user %></p>
+<div>
+  <%= Pygments.highlight(@marrow.content, lexer: @marrow.language, options: {linenos: 'table'}) %>
+</div>
+<a href="/marrows/edit/<%= @marrow.name %>">Edit</a>
+<a href="/marrows/create_marrow">Create a new Marrow.</a>
