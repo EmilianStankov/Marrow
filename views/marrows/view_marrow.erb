@@ -1,5 +1,7 @@
-<p>Logged in as <%= @@user %></p>
-<div>
+<% unless @@user == nil %>
+  <p>Logged in as <%= @@user %></p>
+<% end %>
+<div class="marrow_container">
   <%= Pygments.highlight(@marrow.content, lexer: @marrow.language, options: {linenos: 'table'}) %>
 </div>
 <a href="/marrows/edit/<%= @marrow.name %>">Edit</a>

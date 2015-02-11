@@ -45,6 +45,11 @@ post '/users/login' do
   end
 end
 
+get '/users/logout' do
+  @@user = nil
+  erb :'users/login'
+end
+
 def authenticate
   redirect "/users/login" if @@user == nil
 end

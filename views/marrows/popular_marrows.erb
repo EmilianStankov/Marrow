@@ -1,0 +1,11 @@
+<% if @marrows.any? %>
+  <ul>
+    <% @marrows.each do |marrow| %>
+      <% unless marrow == nil %>
+        <li><a href="/marrows/<%= marrow.name %>"><%= marrow.name %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No marrows available.</p>
+<% end %>
