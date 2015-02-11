@@ -1,0 +1,76 @@
+div.marrow_container {
+	width: 800px;
+	height: 500px;
+	overflow: auto;
+}
+/*528413gr 2088B2bl D86E3Frd*/
+body {
+	font-family: Arial;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	background: black;
+	color: #D86E3F;
+}
+
+.menu {
+	text-align: center;
+	background: #2088B2;
+	width: 100%;
+}
+
+h1 {
+	font-size: 80px;
+	font-weight: bolder;
+	color: white;
+	margin: auto;
+	padding: 0px;
+	letter-spacing: -10;
+	text-align: center;
+	background: #528413;
+	margin-bottom: 0px;
+}
+
+div.menu { 
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	vertical-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #994E2D;
+}
+
+a.menu {
+	color: #dddddd;
+	font-weight: bold;
+	font-size: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+a.menu:hover {
+	color: white;
+}
+
+a.menu:visited {
+	color: #dddddd;
+}
+
+.login {
+	margin-top: 150px;
+}
+
+.register {
+	margin-top: 150px;
+}
+
+input[type=submit] {
+	background: #528413;
+	border: none;
+}

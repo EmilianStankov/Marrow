@@ -1,27 +1,25 @@
 <html>
   <style>
     <%= Pygments.css('.highlight', style: 'monokai') %>
-    div.marrow_container { width: 800px; height: 500px; overflow: auto;}
   </style>
   <head>
     <title>Marrow</title>
+    <link rel="stylesheet" type="text/css" href="../../../../style.css">
   </head>
   <body>
     <h1>MARROW</h1>
-    <div id="menu">
-      <ul id="menu">
-        <% if @@user != nil %>
-          <li><a href="/marrows/list_marrows">Your marrows</a></li>
-        <% end %>
-        <li><a href="/marrows/browse/all_marrows">Browse</a>
-        <li><a href="/marrows/browse/popular_marrows">Popular</a></li>
-        <% if @@user == nil %>
-          <li><a href="/users/login">Login</a></li>
-        <% else %>
-          <li><a href="/users/logout">Logout</a></li>
-        <% end %>
-      </ul>
+    <div class="menu">
+      <% if @@user != nil %>
+        <a class="menu" href="/marrows/list_marrows">Your marrows</a>
+      <% end %>
+      <a class="menu" href="/marrows/browse/all_marrows">Browse</a>
+      <a class="menu" href="/marrows/browse/popular_marrows">Popular</a>
+      <% if @@user == nil %>
+        <a class="menu" href="/users/login">Login</a>
+      <% else %>
+        <a class="menu" href="/users/logout">Logout</a>
+      <% end %>
     </div>
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>
