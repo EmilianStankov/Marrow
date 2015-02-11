@@ -42,3 +42,25 @@ post '/marrows/edit/:marrow' do
   @marrow.update(access_level: params[:access_level])
   erb :'marrows/view_marrow'
 end
+
+get '/marrows/like/:marrow' do
+  authenticate
+  u = get_logged_user
+  @marrow = Marrows.find_by(name: params[:marrow])
+  @marrow.update(rating: @marrow.rating + 1)
+  if u.likes == nil
+    u.update(likes: [@marrow])
+  else
+    u.update(likes: u.likes << @marrow)
+  end
+  erb :'marrows/view_marrow'
+end
+
+get '/marrows/dislike/:marrow' do
+  authenticate
+  u = get_logged_user
+  @marrow = Marrows.find_by(name: params[:marrow])
+  @marrow.update(rating: @marrow.rating - 1)
+  u.update(likes: u.likes - [@marrow])
+  erb :'marrows/view_marrow'
+end

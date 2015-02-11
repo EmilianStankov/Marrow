@@ -53,3 +53,7 @@ end
 def authenticate
   redirect "/users/login" if @@user == nil
 end
+
+def get_logged_user
+  user = Users.find_by(name: @@user)
+end

@@ -4,5 +4,11 @@
 <div class="marrow_container">
   <%= Pygments.highlight(@marrow.content, lexer: @marrow.language, options: {linenos: 'table'}) %>
 </div>
-<a href="/marrows/edit/<%= @marrow.name %>">Edit</a>
-<a href="/marrows/create_marrow">Create a new Marrow.</a>
+<p>Likes: <%= @marrow.rating %></p>
+<% if get_logged_user.likes != nil and get_logged_user.likes.include? @marrow %>
+  <a href="/marrows/dislike/<%= @marrow.name %>">Dislike</a>
+<% else %>
+  <a href="/marrows/like/<%= @marrow.name %>">Like</a>
+<% end %>
+<a href="/marrows/edit/<%= @marrow.name %>">Edit</a><br>
+<a href="/marrows/create_marrow">Create a new Marrow.</a><br>
