@@ -18,7 +18,7 @@ class Users < ActiveRecord::Base
     u.email = email
     u.salt = salt
     u.password = salt + password
-    serialize :likes
+    u.likes = ""
     u.save
   end
 end

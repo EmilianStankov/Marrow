@@ -43,11 +43,13 @@ get '/marrows/like/:marrow' do
   u = get_logged_user
   @marrow = Marrows.find_by(name: params[:marrow])
   @marrow.update(rating: @marrow.rating + 1)
+  marrow_repr = "<name:#{@marrow.name};creator:#{@marrow.creator}>"
   if u.likes == nil
-    u.update(likes: [@marrow])
+    u.update(likes: marrow_repr)
   else
-    u.update(likes: u.likes << @marrow)
+    u.update(likes: u.likes << marrow_repr)
   end
+  puts u.likes
   erb :'marrows/view_marrow'
 end
 
@@ -56,7 +58,10 @@ get '/marrows/dislike/:marrow' do
   u = get_logged_user
   @marrow = Marrows.find_by(name: params[:marrow])
   @marrow.update(rating: @marrow.rating - 1)
-  u.update(likes: u.likes - [@marrow])
+  marrow_repr = "<name:#{@marrow.name};creator:#{@marrow.creator}>"
+  new_likes = u.likes.sub(marrow_repr, '')
+  u.update(likes: new_likes)
+  puts u.likes
   erb :'marrows/view_marrow'
 end
 
@@ -66,6 +71,6 @@ get '/marrows/browse/all_marrows' do
 end
 
 get '/marrows/browse/popular_marrows' do
-  @marrows = Marrows.where(access_level: 'public').sort[0..50]
+  @marrows = Marrows.where(access_level: 'public').sort.reverse[0..50]
   erb :'marrows/popular_marrows'
 end
