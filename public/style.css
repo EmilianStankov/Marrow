@@ -1,7 +1,18 @@
 div.marrow_container {
-	width: 800px;
-	height: 500px;
+	width: 900px;
+	height: 400px;
 	overflow: auto;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.container {
+	width: 400px;
+	overflow: auto;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
 }
 /*528413gr 2088B2bl D86E3Frd*/
 body {
@@ -39,6 +50,7 @@ div.menu {
 }
 
 a {
+	color: #D86E3F;
 	text-decoration: none;
 }
 
@@ -46,7 +58,12 @@ a:visited {
 	color: #994E2D;
 }
 
-a.menu {
+a:hover {
+	color: white;
+	font-style: italic;
+}
+
+a.menuButton {
 	color: #dddddd;
 	font-weight: bold;
 	font-size: 20px;
@@ -54,11 +71,12 @@ a.menu {
 	margin-left: 10px;
 }
 
-a.menu:hover {
+a.menuButton :hover {
 	color: white;
+	font-style: none;
 }
 
-a.menu:visited {
+a.menuButton :visited {
 	color: #dddddd;
 }
 
@@ -71,6 +89,64 @@ a.menu:visited {
 }
 
 input[type=submit] {
-	background: #528413;
+	background: #333333;
+	color: white;
+	font-size: 15px;
+	border: 2px solid;
+	border-color: #444444;
+	border-top-color: #222222;
+	border-left-color: #222222;
+	border-radius: 5px;
+	margin-top: 5px;
+	padding: 7px 10px;
+}
+
+input[type=text] {
+	background: #222222;
+	font-size: 15px;
+	color: white;
 	border: none;
+}
+
+input[type=password] {
+	background: #222222;
+	font-size: 15px;
+	color: white;
+	border: none;
+}
+
+input[type=email] {
+	background: #222222;
+	font-size: 15px;
+	color: white;
+	border: none;
+}
+
+textarea {
+	background: #222222;
+	font-size: 15px;
+	color: white;
+	border: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+td.code {
+	width: 890px;
+}
+
+#likes {
+	color: #528413;
+	font-weight: bold;
+}
+
+select {
+	background: #222222;
+	color: #dddddd;
+}
+
+::selection {
+	background: #D86E3F;
 }
