@@ -63,7 +63,7 @@ a:hover {
 	font-style: italic;
 }
 
-a.menuButton {
+.menuButton {
 	color: #dddddd;
 	font-weight: bold;
 	font-size: 20px;
@@ -71,13 +71,13 @@ a.menuButton {
 	margin-left: 10px;
 }
 
-a.menuButton :hover {
-	color: white;
-	font-style: none;
+.menuButton:visited {
+	color: #dddddd;
 }
 
-a.menuButton :visited {
-	color: #dddddd;
+.menuButton:hover {
+	color: white;
+	font-style: none;
 }
 
 .login {
@@ -96,6 +96,19 @@ input[type=submit] {
 	border-color: #444444;
 	border-top-color: #222222;
 	border-left-color: #222222;
+	border-radius: 5px;
+	margin-top: 5px;
+	padding: 7px 10px;
+}
+
+input[type=submit]:hover {
+	background: #222222;
+	color: white;
+	font-size: 15px;
+	border: 2px solid;
+	border-color: #333333;
+	border-top-color: #111111;
+	border-left-color: #111111;
 	border-radius: 5px;
 	margin-top: 5px;
 	padding: 7px 10px;
