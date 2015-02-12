@@ -10,14 +10,14 @@
     <h1>MARROW</h1>
     <div class="menu">
       <% if @@user != nil %>
-        <a class="menu" href="/marrows/list_marrows">Your marrows</a>
+        <a class="menuButton" href="/marrows/list_marrows">Your marrows</a>
       <% end %>
-      <a class="menu" href="/marrows/browse/all_marrows">Browse</a>
-      <a class="menu" href="/marrows/browse/popular_marrows">Popular</a>
+      <a class="menuButton" href="/marrows/browse/all_marrows">Browse</a>
+      <a class="menuButton" href="/marrows/browse/popular_marrows">Popular</a>
       <% if @@user == nil %>
-        <a class="menu" href="/users/login">Login</a>
+        <a class="menuButton" href="/users/login">Login</a>
       <% else %>
-        <a class="menu" href="/users/logout">Logout</a>
+        <a class="menuButton" href="/users/logout">Logout</a>
       <% end %>
     </div>
   <%= yield %>

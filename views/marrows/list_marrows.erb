@@ -1,13 +1,15 @@
-<p>Logged in as <%= @@user %></p>
+<h2>These are all your marrows, <%= @@user %></h2>
 <% if @marrows.any? %>
-  <ul>
-    <% @marrows.each do |marrow| %>
-      <% if marrow.creator == @@user %>
-        <li><a href="/marrows/<%= marrow.name %>"><%= marrow.name %></a></li>
+  <div class="container">
+    <ul>
+      <% @marrows.each do |marrow| %>
+        <% if marrow.creator == @@user %>
+          <li><a href="/marrows/<%= marrow.name %>"><%= marrow.name %></a></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
 <% else %>
   <p>No marrows available.</p>
 <% end %>
-<a href ="/marrows/create_marrow">Create a new Marrow.</a>
+<a href ="/marrows/create_marrow"><b>CREATE</b></a>

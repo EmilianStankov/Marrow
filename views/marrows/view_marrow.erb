@@ -5,10 +5,15 @@
   <%= Pygments.highlight(@marrow.content, lexer: @marrow.language, options: {linenos: 'table'}) %>
 </div>
 <p>Likes: <%= @marrow.rating %></p>
-<% if get_logged_user.likes != nil and get_logged_user.likes.include? @marrow %>
-  <a href="/marrows/dislike/<%= @marrow.name %>">Dislike</a>
-<% else %>
-  <a href="/marrows/like/<%= @marrow.name %>">Like</a>
+<% marrow_repr = "<name:#{@marrow.name};creator:#{@marrow.creator}>" %>
+<% unless @@user == nil %>
+  <% if get_logged_user.likes.include? marrow_repr %>
+    <a href="/marrows/dislike/<%= @marrow.name %>">Dislike</a><br>
+  <% else %>
+    <a href="/marrows/like/<%= @marrow.name %>">Like</a><br>
+  <% end %>
+  <% if @@user == @marrow.creator %>
+    <a href="/marrows/edit/<%= @marrow.name %>">Edit</a><br>
+  <% end %>
+  <a href="/marrows/create_marrow">Create a new Marrow.</a><br>
 <% end %>
-<a href="/marrows/edit/<%= @marrow.name %>">Edit</a><br>
-<a href="/marrows/create_marrow">Create a new Marrow.</a><br>
