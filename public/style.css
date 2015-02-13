@@ -163,3 +163,8 @@ select {
 ::selection {
 	background: #D86E3F;
 }
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}

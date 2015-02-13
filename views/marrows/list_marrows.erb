@@ -4,7 +4,7 @@
     <ul>
       <% @marrows.each do |marrow| %>
         <% if marrow.creator == @@user %>
-          <li><a href="/marrows/<%= marrow.name %>"><%= marrow.name %></a></li>
+          <li><a href="/marrows/<%= marrow.name %>/<%= @@user %>"><%= marrow.name %></a></li>
         <% end %>
       <% end %>
     </ul>

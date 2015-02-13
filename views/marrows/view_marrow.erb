@@ -4,7 +4,7 @@
 <div class="marrow_container">
   <%= Pygments.highlight(@marrow.content, lexer: @marrow.language, options: {linenos: 'table'}) %>
 </div>
-<p>Likes: <%= @marrow.rating %></p>
+<p id="likes">Likes: <%= @marrow.rating %></p>
 <% marrow_repr = "<name:#{@marrow.name};creator:#{@marrow.creator}>" %>
 <% unless @@user == nil %>
   <% if get_logged_user.likes.include? marrow_repr %>

@@ -18,13 +18,6 @@ get '/marrows/list_marrows' do
   erb :'marrows/list_marrows'
 end
 
-get '/marrows/:marrow' do
-  @marrow = Marrows.find_by(name: params[:marrow])
-  erb :'marrows/missing' if @marrow == nil
-  authenticate if @marrow.access_level == 'private'
-  erb :'marrows/view_marrow'
-end
-
 get '/marrows/edit/:marrow' do
   authenticate
   @marrow = Marrows.find_by(name: params[:marrow])
@@ -73,4 +66,11 @@ end
 get '/marrows/browse/popular_marrows' do
   @marrows = Marrows.where(access_level: 'public').sort.reverse[0..50]
   erb :'marrows/popular_marrows'
+end
+
+get '/marrows/:marrow/:user' do
+  @marrow = Marrows.find_by(name: params[:marrow], creator: params[:user])
+  erb :'marrows/missing' if @marrow == nil
+  authenticate if @marrow.access_level == 'private'
+  erb :'marrows/view_marrow'
 end
