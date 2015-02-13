@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150209171108) do
     t.string "salt"
     t.string "password_hash"
     t.string "likes"
+    t.string "following"
   end
 
 end

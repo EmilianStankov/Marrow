@@ -54,6 +54,24 @@ get '/users/logout' do
   erb :'users/login'
 end
 
+get '/users/follow/:user/:marrow' do
+  u = get_logged_user
+  unless params[:user] == @@user
+    following = u.following << params[:user] << "~#<username>#~"
+    u.update(following: following)
+  end
+  @marrow = Marrows.find_by(creator: params[:user], name: params[:marrow])
+  erb :'marrows/view_marrow'
+end
+
+get '/users/following' do
+  erb :'users/following'
+end
+
+get '/users/news' do
+  erb :'users/news'
+end
+
 def authenticate
   redirect "/users/login" if @@user == nil
 end

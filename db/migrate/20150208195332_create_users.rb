@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :salt
       t.string :password_hash
       t.string :likes
+      t.string :following
     end
   end
 end

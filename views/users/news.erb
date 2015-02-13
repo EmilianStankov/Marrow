@@ -1,0 +1,10 @@
+<h2>Latest activity by people you follow:</h2>
+<div class="container">
+  <ul>
+    <% get_logged_user.following.split("~#<username>#~").each do |user| %>
+      <% Marrows.where(creator: user).reverse.each do |marrow| %>
+        <li><%= user %> created <a href="/marrows/<%= marrow.name %>/<%= user %>"><%= marrow.name %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

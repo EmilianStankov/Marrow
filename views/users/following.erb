@@ -1,0 +1,8 @@
+<h2>These are all people you follow, <%= @@user %></h2>
+<div class="container">
+  <ul>
+    <% get_logged_user.following.split("~#<username>#~").each do |user| %>
+      <li><a href="/marrows/by/<%= user %>"><%= user %></a></li>
+    <% end %>
+  </ul>
+</div>

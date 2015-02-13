@@ -68,8 +68,18 @@ a:hover {
 	color: #dddddd;
 	font-weight: bold;
 	font-size: 20px;
-	margin-right: 10px;
-	margin-left: 10px;
+	border-right: 2px solid #2593B7;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.menuButton:last-of-type {
+	color: #dddddd;
+	font-weight: bold;
+	font-size: 20px;
+	border-right: none;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .menuButton:visited {

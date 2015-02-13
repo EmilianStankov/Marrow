@@ -19,6 +19,7 @@ class Users < ActiveRecord::Base
     u.salt = salt
     u.password = salt + password
     u.likes = ""
+    u.following = ""
     u.save
   end
 end
