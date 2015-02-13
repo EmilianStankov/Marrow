@@ -1,0 +1,12 @@
+<h2>These are all public marrows by <%= @creator %></h2>
+<% if @marrows.any? %>
+  <div class="container">
+    <ul>
+      <% @marrows.each do |marrow| %>
+        <li><a href="/marrows/<%= marrow.name %>/<%= marrow.creator %>"><%= marrow.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <p>No marrows by <%= @creator %> available.</p>
+<% end %>

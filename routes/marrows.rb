@@ -4,18 +4,29 @@ get '/marrows/create_marrow' do
 end
 
 post '/marrows/create_marrow' do
-  Marrows.create(
-    params[:name], params[:language], @@user,
-    params[:content], 0, params[:access_level]
-  )
-  @marrows = Marrows.where(creator: @@user)
-  erb :'marrows/list_marrows'
+  if params[:name] == ""
+    @content = params[:content]
+    erb :'marrows/enter_name'
+  else
+    Marrows.create(
+      params[:name], params[:language], @@user,
+      params[:content], 0, params[:access_level]
+    )
+    @marrows = Marrows.where(creator: @@user)
+    erb :'marrows/list_marrows'
+  end
 end
 
 get '/marrows/list_marrows' do
   authenticate
   @marrows = Marrows.where(creator: @@user)
   erb :'marrows/list_marrows'
+end
+
+get '/marrows/by/:creator' do
+  @marrows = Marrows.where(creator: params[:creator], access_level: 'public')
+  @creator = params[:creator]
+  erb :'marrows/by_creator'
 end
 
 get '/marrows/edit/:marrow' do
@@ -29,6 +40,14 @@ post '/marrows/edit/:marrow' do
   @marrow.update(content: params[:content])
   @marrow.update(access_level: params[:access_level])
   erb :'marrows/view_marrow'
+end
+
+get '/marrows/delete/:marrow' do
+  authenticate
+  m = Marrows.find_by(name: params[:marrow], creator: @@user)
+  m.destroy
+  @marrows = Marrows.where(creator: @@user)
+  erb :'marrows/list_marrows'
 end
 
 get '/marrows/like/:marrow' do

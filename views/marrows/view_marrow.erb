@@ -14,6 +14,8 @@
   <% end %>
   <% if @@user == @marrow.creator %>
     <a href="/marrows/edit/<%= @marrow.name %>">Edit</a><br>
+    <a href="/marrows/delete/<%= @marrow.name %>">Delete</a><br>
   <% end %>
   <a href="/marrows/create_marrow">Create a new Marrow.</a><br>
 <% end %>
+<a href="/marrows/by/<%= @marrow.creator %>">All marrows by <%= @marrow.creator %></a><br>

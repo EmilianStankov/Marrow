@@ -4,7 +4,13 @@
     <ol>
       <% @marrows.each do |marrow| %>
         <% unless marrow == nil %>
-          <li><a href="/marrows/<%= marrow.name %>/<%= marrow.creator %>"><%= marrow.name %></a>, <i>by <%= marrow.creator %> - <span id="likes"><%= marrow.rating %> likes</span></i></li>
+          <li>
+            <a href="/marrows/<%= marrow.name %>/<%= marrow.creator %>">
+              <%= marrow.name %></a>, <i>by
+            <a href="/marrows/by/<%= marrow.creator %>">
+              <%= marrow.creator %>
+            </a> - <span id="likes"><%= marrow.rating %> likes</span>
+          </i></li>
         <% end %>
       <% end %>
     </ol>

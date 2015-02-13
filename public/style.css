@@ -1,6 +1,6 @@
 div.marrow_container {
 	width: 900px;
-	height: 400px;
+	height: 350px;
 	overflow: auto;
 	text-align: center;
 	margin-left: auto;
@@ -140,6 +140,7 @@ textarea {
 	font-size: 15px;
 	color: white;
 	border: none;
+	height: 400px;
 }
 
 ul {

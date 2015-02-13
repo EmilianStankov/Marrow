@@ -3,7 +3,13 @@
   <div class="container">
     <ul>
       <% @marrows.each do |marrow| %>
-        <li><a href="/marrows/<%= marrow.name %>/<%= marrow.creator %>"><%= marrow.name %></a>, <i>by <%= marrow.creator %></i></li>
+        <li>
+          <a href="/marrows/<%= marrow.name %>/<%= marrow.creator %>">
+            <%= marrow.name %></a>, <i>by
+          <a href="/marrows/by/<%= marrow.creator %>">
+            <%= marrow.creator %>
+          </a></i>
+        </li>
       <% end %>
     </ul>
   </div>
