@@ -14,9 +14,10 @@
   <% if @@user == @marrow.creator %>
     <a href="/marrows/edit/<%= @marrow.name %>">Edit</a>
     <a href="/marrows/delete/<%= @marrow.name %>">Delete</a>
-  <% end %>
-  <% unless get_logged_user.following.split("~#<username>#~").include? @marrow.creator %>
-    <a href="/users/follow/<%= @marrow.creator %>/<%= @marrow.name %>">Follow</a>
+  <% else %>
+    <% unless get_logged_user.following.split("~#<username>#~").include? @marrow.creator %>
+      <a href="/users/follow/<%= @marrow.creator %>/<%= @marrow.name %>">Follow</a>
+    <% end %>
   <% end %>
   <a href="/marrows/create_marrow">Create a new Marrow.</a>
 <% end %>
