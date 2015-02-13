@@ -4,18 +4,31 @@
 <div class="marrow_container">
   <%= Pygments.highlight(@marrow.content, lexer: @marrow.language, options: {linenos: 'table'}) %>
 </div>
-<p id="likes">Likes: <%= @marrow.rating %></p>
 <% marrow_repr = "<name:#{@marrow.name};creator:#{@marrow.creator}>" %>
 <% unless @@user == nil %>
   <% if get_logged_user.likes.include? marrow_repr %>
-    <a href="/marrows/dislike/<%= @marrow.name %>">Dislike</a><br>
+    <a href="/marrows/dislike/<%= @marrow.name %>">Dislike</a>
   <% else %>
-    <a href="/marrows/like/<%= @marrow.name %>">Like</a><br>
+    <a href="/marrows/like/<%= @marrow.name %>">Like</a>
   <% end %>
   <% if @@user == @marrow.creator %>
-    <a href="/marrows/edit/<%= @marrow.name %>">Edit</a><br>
-    <a href="/marrows/delete/<%= @marrow.name %>">Delete</a><br>
+    <a href="/marrows/edit/<%= @marrow.name %>">Edit</a>
+    <a href="/marrows/delete/<%= @marrow.name %>">Delete</a>
   <% end %>
-  <a href="/marrows/create_marrow">Create a new Marrow.</a><br>
+  <a href="/marrows/create_marrow">Create a new Marrow.</a>
+<% end %>
+<p id="likes">Likes: <%= @marrow.rating %></p>
+<div id="comments_container">
+  <h3>Comments:</h3>
+  <% get_comments(@marrow).each do |comment| %>
+    <div class="comment"><%= comment %></div>
+  <% end %>
+</div>
+<% unless @@user == nil %>
+  Leave a comment:
+  <form action="/marrows/comment/<%= @marrow.creator %>/<%= @marrow.name %>" method="post">
+    <textarea class="new_comment" name="comment"></textarea><br>
+    <input type="submit" action="/marrows/comment/<%= @marrow.name %>" value="Comment">
+  </form>
 <% end %>
 <a href="/marrows/by/<%= @marrow.creator %>">All marrows by <%= @marrow.creator %></a><br>

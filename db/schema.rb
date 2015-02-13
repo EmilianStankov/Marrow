@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150209171108) do
     t.string  "language"
     t.string  "content"
     t.integer "rating"
+    t.string  "comments"
     t.string  "access_level"
   end
 

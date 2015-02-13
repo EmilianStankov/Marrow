@@ -9,6 +9,7 @@ class Marrows < ActiveRecord::Base
     m.creator = creator
     m.content = content
     m.rating = rating
+    m.comments = ""
     m.access_level = access_level
     m.save
   end

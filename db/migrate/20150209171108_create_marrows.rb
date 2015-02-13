@@ -6,6 +6,7 @@ class CreateMarrows < ActiveRecord::Migration
       t.string :language
       t.string :content
       t.integer :rating
+      t.string :comments
       t.string :access_level
     end
   end

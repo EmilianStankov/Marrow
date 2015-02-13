@@ -23,6 +23,16 @@ get '/marrows/list_marrows' do
   erb :'marrows/list_marrows'
 end
 
+post '/marrows/comment/:creator/:marrow' do
+  authenticate
+  @marrow = Marrows.find_by(name: params[:marrow], creator: params[:creator])
+  comments = @marrow.comments
+  comments << params[:comment] << ", by #{@@user}" << "~#<comment>#~"
+  @marrow.update(comments: comments)
+  @user = get_logged_user
+  erb :'marrows/view_marrow'
+end
+
 get '/marrows/by/:creator' do
   @marrows = Marrows.where(creator: params[:creator], access_level: 'public')
   @creator = params[:creator]
@@ -92,4 +102,8 @@ get '/marrows/:marrow/:user' do
   erb :'marrows/missing' if @marrow == nil
   authenticate if @marrow.access_level == 'private'
   erb :'marrows/view_marrow'
+end
+
+def get_comments(marrow)
+  marrow.comments.split("~#<comment>#~")
 end
