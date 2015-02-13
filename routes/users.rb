@@ -16,8 +16,12 @@ post '/users/register' do
   elsif params[:password].length < 8
     erb :'users/registration_fail'
   else
-    Users.register(params[:username], params[:email], params[:password])
-    erb :'users/registration_successful'
+    if available?(params[:username], params[:email])
+      Users.register(params[:username], params[:email], params[:password])
+      erb :'users/registration_successful'
+    else
+      erb :'users/registration_fail'
+    end
   end
 end
 
@@ -56,4 +60,10 @@ end
 
 def get_logged_user
   user = Users.find_by(name: @@user)
+end
+
+def available?(name, email)
+  u1 = Users.find_by(name: name)
+  u2 = Users.find_by(email: email)
+  u1 == nil and u2 == nil
 end
