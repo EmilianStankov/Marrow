@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     activemodel (4.2.0)
       activesupport (= 4.2.0)
@@ -26,6 +27,8 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     rake (10.4.2)
     sinatra (1.4.5)
       rack (~> 1.4)
@@ -47,6 +50,7 @@ PLATFORMS
 DEPENDENCIES
   digest
   pygments.rb
+  rack-test
   rake
   sinatra
   sinatra-activerecord

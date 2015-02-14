@@ -22,4 +22,8 @@ class Users < ActiveRecord::Base
     u.following = ""
     u.save
   end
+
+  def self.destroy
+    self.destroy
+  end
 end
